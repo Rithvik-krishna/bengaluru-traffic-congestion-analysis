@@ -11,20 +11,15 @@
   <!-- Navigation -->
   <nav>
     <div class="logo">
-      🚗 BlrTraffic<span>Insight</span>
+      BlrTraffic<span>Insight</span>
     </div>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#problem">Problem</a></li>
+      <li><a href="#overview" class="active">Overview</a></li>
       <li><a href="#dataset">Dataset</a></li>
-      <li><a href="#cleaning">Cleaning</a></li>
       <li><a href="#methodology">Methodology</a></li>
       <li><a href="#analysis">Analysis</a></li>
-      <li><a href="#insights">Insights</a></li>
-      <li><a href="#recommendations">Recommendations</a></li>
+      <li><a href="#findings">Findings</a></li>
       <li><a href="#limitations">Limitations</a></li>
-      <li><a href="#summary">Summary</a></li>
-      <li><a href="#about">About</a></li>
     </ul>
     <div class="menu-toggle" id="mobileMenu" onclick="toggleMenu()">
       <span></span>
@@ -34,11 +29,14 @@
   </nav>
 
   <main>
-    <!-- Home / Hero Section -->
-    <section id="home">
+    <!-- Overview Section -->
+    <section id="overview">
       <div class="hero-card">
         <h1>Bengaluru Traffic Congestion Analysis</h1>
-        <p class="tagline">Data-driven insights for smarter urban mobility</p>
+        <p class="tagline">
+          Analysis of 8,936 traffic observations across Bengaluru from 2022–2024.<br>
+          Most Congested Area: Koramangala (93.99%) | Volume-Speed Correlation: -0.341 | Dataset Granularity: Daily
+        </p>
         
         <div class="cta-group">
           <a href="#analysis" class="btn btn-primary">View Analysis</a>
@@ -51,12 +49,12 @@
             <p>Records</p>
           </div>
           <div class="stat-item">
-            <h3>10+</h3>
-            <p>Areas</p>
+            <h3>16</h3>
+            <p>Features</p>
           </div>
           <div class="stat-item">
             <h3 id="statDateRange">2022–2024</h3>
-            <p>Date Range</p>
+            <p>Temporal Span</p>
           </div>
           <div class="stat-item">
             <h3 id="statTopInsight">Koramangala</h3>
@@ -64,24 +62,17 @@
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Problem Statement -->
-    <section id="problem">
-      <div class="section-header">
-        <h2>Problem Statement</h2>
-        <p>Understanding Bengaluru's urban grid congestion problem</p>
-      </div>
-      <div class="overview-grid">
+      <div class="overview-grid" style="margin-top: 3rem;">
         <div class="overview-text">
           <p>
-            Bengaluru, known globally as the tech hub of India, has witnessed unprecedented economic growth and urbanization over the past few decades. However, this growth has come at a massive cost to its transportation infrastructure. The city suffers from chronic, severe traffic congestion that results in billions of hours lost, millions of liters of wasted fuel, and significant environmental degradation.
+            Bengaluru, known globally as the tech hub of India, has witnessed rapid economic growth and urbanization over the past few decades. However, this growth has placed severe strain on its transportation infrastructure. The city suffers from chronic congestion that results in billions of hours lost, millions of liters of wasted fuel, and significant environmental degradation.
           </p>
           <p>
             This analysis explores the severe traffic gridlock by studying the daily and geographical traffic parameters of key transit hubs. The rapid expansion of vehicles outstripping historical road capacities has created chronic issues where minor increases in volume cross capacity thresholds and trigger total speed collapse.
           </p>
           <p>
-            By exploring historical trends, geographical hotspots, weather effects, and roadway properties, this project aims to diagnose key pressure points and provide actionable, evidence-based recommendations.
+            By exploring historical trends, geographical hotspots, weather effects, and roadway properties, this project aims to diagnose key pressure points and provide actionable, evidence-based academic findings.
           </p>
         </div>
         <div class="objectives-card">
@@ -106,22 +97,18 @@
 
       <div class="dataset-stats">
         <div class="dataset-card">
-          <div class="icon">📊</div>
           <div class="num">8,936</div>
           <div class="label">Total Records</div>
         </div>
         <div class="dataset-card">
-          <div class="icon">📝</div>
           <div class="num">16</div>
           <div class="label">Total Features</div>
         </div>
         <div class="dataset-card">
-          <div class="icon">⏳</div>
-          <div class="num">Daily (YYYY-MM-DD)</div>
+          <div class="num">Daily</div>
           <div class="label">Temporal Span</div>
         </div>
         <div class="dataset-card">
-          <div class="icon">🛡️</div>
           <div class="num">100%</div>
           <div class="label">Clean & Validated</div>
         </div>
@@ -222,12 +209,12 @@
         </table>
       </div>
 
-      <h3>Data Quality Report Summary</h3>
+      <h3>Data Cleaning Summary</h3>
       <div class="table-wrapper">
         <table>
           <thead>
             <tr>
-              <th>Data Quality Metric</th>
+              <th>Metric</th>
               <th>Before Processing</th>
               <th>After Processing</th>
               <th>Cleaning Action Applied</th>
@@ -235,63 +222,22 @@
           </thead>
           <tbody>
             <tr>
-              <td>Missing Values</td>
+              <td><strong>Missing Values</strong></td>
               <td>0</td>
               <td>0</td>
               <td>No missing values found in raw dataset. Column types verified.</td>
             </tr>
             <tr>
-              <td>Duplicate Rows</td>
+              <td><strong>Duplicate Rows</strong></td>
               <td>0</td>
               <td>0</td>
               <td>No duplicate observations found in raw dataset.</td>
             </tr>
             <tr>
-              <td>Column Names</td>
+              <td><strong>Column Names</strong></td>
               <td>Non-standardized (Mixed spaces/casing)</td>
               <td>Standardized (Lowercase, snake_case)</td>
               <td>Converted to lowercase and replaced spaces and slashes with underscores.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Data Cleaning Summary Section -->
-    <section id="cleaning">
-      <div class="section-header">
-        <h2>Data Cleaning Summary</h2>
-        <p>Grounded pipeline actions ensuring statistical validity</p>
-      </div>
-      <div class="table-wrapper" style="max-width: 600px; margin: 0 auto;">
-        <table>
-          <thead>
-            <tr>
-              <th>Metric</th>
-              <th>Before</th>
-              <th>After</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Rows</strong></td>
-              <td>8,936</td>
-              <td>8,936</td>
-            </tr>
-            <tr>
-              <td><strong>Missing Values</strong></td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td><strong>Duplicates</strong></td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td><strong>Standardized Columns</strong></td>
-              <td>No</td>
-              <td>Yes</td>
             </tr>
           </tbody>
         </table>
@@ -302,43 +248,39 @@
     <section id="methodology">
       <div class="section-header">
         <h2>Project Methodology</h2>
-        <p>A structured, end-to-end data science process</p>
+        <p>A structured, end-to-end data science process mapping urban congestion</p>
       </div>
-      <div class="methodology-grid">
-        <div class="methodology-card">
-          <div class="m-icon">📥</div>
-          <h4>1. Collection</h4>
+      
+      <div class="methodology-timeline">
+        <div class="methodology-step">
+          <div class="step-num">Step 1</div>
+          <h4>Dataset</h4>
           <p>Acquiring daily traffic observations across major routes.</p>
         </div>
-        <div class="methodology-card">
-          <div class="m-icon">🧹</div>
-          <h4>2. Cleaning</h4>
+        <div class="methodology-step">
+          <div class="step-num">Step 2</div>
+          <h4>Cleaning</h4>
           <p>Validating nulls, duplicates, and standardizing schemas.</p>
         </div>
-        <div class="methodology-card">
-          <div class="m-icon">⚙️</div>
-          <h4>3. Feature Eng.</h4>
+        <div class="methodology-step">
+          <div class="step-num">Step 3</div>
+          <h4>Engineering</h4>
           <p>Extracting day of week, month, quarter, and year properties.</p>
         </div>
-        <div class="methodology-card">
-          <div class="m-icon">🔍</div>
-          <h4>4. EDA</h4>
+        <div class="methodology-step">
+          <div class="step-num">Step 4</div>
+          <h4>EDA</h4>
           <p>Analyzing statistical properties and correlations.</p>
         </div>
-        <div class="methodology-card">
-          <div class="m-icon">📊</div>
-          <h4>5. Visualization</h4>
+        <div class="methodology-step">
+          <div class="step-num">Step 5</div>
+          <h4>Visualization</h4>
           <p>Generating high-resolution plots mapping urban trends.</p>
         </div>
-        <div class="methodology-card">
-          <div class="m-icon">💡</div>
-          <h4>6. Insights</h4>
+        <div class="methodology-step">
+          <div class="step-num">Step 6</div>
+          <h4>Insights</h4>
           <p>Drawing structured, data-grounded conclusions.</p>
-        </div>
-        <div class="methodology-card">
-          <div class="m-icon">🎯</div>
-          <h4>7. Action</h4>
-          <p>Formulating prioritized, evidence-based recommendations.</p>
         </div>
       </div>
     </section>
@@ -359,20 +301,16 @@
           <div class="chart-info">
             <h3>1. Traffic Volume Distribution</h3>
             <div class="info-block">
-              <strong>Observation</strong>
-              <p>The traffic volume follows a right-skewed normal distribution with an average traffic rate centered around the middle of the range.</p>
+              <strong>Key Observation</strong>
+              <p>Volume follows a right-skewed normal distribution, averaging 29,236 vehicles.</p>
             </div>
             <div class="info-block">
-              <strong>Evidence</strong>
-              <p>Average traffic volume is 29,236 vehicles, with a median of 27,600 and a wide standard deviation of 13,002 vehicles. The interquartile range (IQR) spans from 19,413 to 38,059 vehicles.</p>
+              <strong>Key Insight</strong>
+              <p>Highly variable volume spans from 19,413 to 38,059 (IQR), showing frequent density spikes.</p>
             </div>
             <div class="info-block">
-              <strong>Insight</strong>
-              <p>Bengaluru traffic flows are highly variable, meaning that average volume alone does not describe the frequent spikes that exceed standard road carrying capacities.</p>
-            </div>
-            <div class="info-block">
-              <strong>Recommendation</strong>
-              <p>Establish dynamic arterial lanes that expand or contract based on vehicle distribution density.</p>
+              <strong>Implication</strong>
+              <p>Infrastructure design must plan for peak density surges rather than median carrying capacity.</p>
             </div>
           </div>
         </div>
@@ -385,20 +323,16 @@
           <div class="chart-info">
             <h3>2. Congestion Level Distribution</h3>
             <div class="info-block">
-              <strong>Observation</strong>
-              <p>The boxplot shows that congestion is heavily concentrated in high percentage ranges, with a very tight IQR near the top.</p>
+              <strong>Key Observation</strong>
+              <p>Congestion is heavily skewed towards the maximum range, with a median of 92.39%.</p>
             </div>
             <div class="info-block">
-              <strong>Evidence</strong>
-              <p>The median congestion level is 92.39%, with the third quartile (Q3) sitting at 100.0%. There are 3 extreme low congestion events flagged as statistical outliers.</p>
+              <strong>Key Insight</strong>
+              <p>Corridors exist in a baseline state of high congestion; outliers denote rare free-flow events.</p>
             </div>
             <div class="info-block">
-              <strong>Insight</strong>
-              <p>Severe congestion is the standard baseline state for most corridors, rather than an occasional event. Extreme outliers represent rare free-flow conditions.</p>
-            </div>
-            <div class="info-block">
-              <strong>Recommendation</strong>
-              <p>Prioritize macro-level demand reduction strategies rather than local bottleneck fixes, as high congestion is systemic.</p>
+              <strong>Implication</strong>
+              <p>Transit improvements must target systemic demand reduction rather than localized bottleneck repairs.</p>
             </div>
           </div>
         </div>
@@ -411,20 +345,16 @@
           <div class="chart-info">
             <h3>3. Chronological Monthly Traffic Trend</h3>
             <div class="info-block">
-              <strong>Observation</strong>
-              <p>Traffic volumes show distinct fluctuations month-over-month throughout the 2022–2024 time period, with specific seasonal variations.</p>
+              <strong>Key Observation</strong>
+              <p>Traffic volumes show distinct seasonal fluctuations month-over-month throughout 2022–2024.</p>
             </div>
             <div class="info-block">
-              <strong>Evidence</strong>
-              <p>Traffic volume peaked at 30,558 vehicles during June 2023 and reached its minimum of 28,174 vehicles in December 2023. Hourly analysis could not be performed because the dataset only contains daily timestamps.</p>
+              <strong>Key Insight</strong>
+              <p>Daily volume peaked at 30,558 in June 2023 and bottomed at 28,174 in December 2023.</p>
             </div>
             <div class="info-block">
-              <strong>Insight</strong>
-              <p>Chronological trends capture overall traffic density growth and long-term network demand shifts. Hourly analysis could not be performed because the dataset only contains daily timestamps.</p>
-            </div>
-            <div class="info-block">
-              <strong>Recommendation</strong>
-              <p>Use long-term trend data to plan infrastructure expansion and coordinate maintenance cycles during lower-demand seasons.</p>
+              <strong>Implication</strong>
+              <p>Maintenance scheduling and roadwork should align with seasonal low-demand periods.</p>
             </div>
           </div>
         </div>
@@ -437,20 +367,16 @@
           <div class="chart-info">
             <h3>4. Traffic Volume vs Speed</h3>
             <div class="info-block">
-              <strong>Observation</strong>
-              <p>The scatter plot shows a strong, non-linear negative relationship where average speed decays rapidly as volume increases.</p>
+              <strong>Key Observation</strong>
+              <p>Average speed decays rapidly and non-linearly as traffic volume increases.</p>
             </div>
             <div class="info-block">
-              <strong>Evidence</strong>
-              <p>Correlation coefficient is -0.3411. Average speeds reach up to 89.79 km/h under low volume but collapse to a hard floor of 20.00 km/h as volumes rise.</p>
+              <strong>Key Insight</strong>
+              <p>Moderate negative correlation of -0.3411, with speeds collapsing to a floor of 20.00 km/h.</p>
             </div>
             <div class="info-block">
-              <strong>Insight</strong>
-              <p>Once traffic volume crosses a critical threshold, speed drops precipitously to a hard floor of 20.00 km/h, highlighting a collapse in road network capacity.</p>
-            </div>
-            <div class="info-block">
-              <strong>Recommendation</strong>
-              <p>Implement smart ramp metering and volume control systems to prevent the traffic density from crossing the critical collapse threshold.</p>
+              <strong>Implication</strong>
+              <p>Volume-control strategies (metering) are vital to keep corridors from crossing critical density thresholds.</p>
             </div>
           </div>
         </div>
@@ -463,20 +389,16 @@
           <div class="chart-info">
             <h3>5. Top 10 Most Congested Areas</h3>
             <div class="info-block">
-              <strong>Observation</strong>
-              <p>Congestion is highly concentrated, with a subset of areas having average congestion levels exceeding 50%.</p>
+              <strong>Key Observation</strong>
+              <p>Congestion is highly concentrated around major commercial and IT clusters.</p>
             </div>
             <div class="info-block">
-              <strong>Evidence</strong>
-              <p>Koramangala is the most congested area at 93.99%, followed by M.G. Road at 90.58% and Indiranagar at 87.64%, while Electronic City is the lowest at 54.45%.</p>
+              <strong>Key Insight</strong>
+              <p>Koramangala (93.99%), M.G. Road (90.58%), and Indiranagar (87.64%) exhibit the highest congestion.</p>
             </div>
             <div class="info-block">
-              <strong>Insight</strong>
-              <p>Key IT hubs and dense commercial zones represent the highest congestion levels in the city, acting as focal points for transit delay propagation.</p>
-            </div>
-            <div class="info-block">
-              <strong>Recommendation</strong>
-              <p>Because Koramangala, M.G. Road, and Indiranagar account for the highest congestion levels, infrastructure investment should be prioritized in these locations.</p>
+              <strong>Implication</strong>
+              <p>Allocation of municipal transport funds and transit-oriented development must focus on these primary bottlenecks.</p>
             </div>
           </div>
         </div>
@@ -489,20 +411,16 @@
           <div class="chart-info">
             <h3>6. Weather Impact Analysis</h3>
             <div class="info-block">
-              <strong>Observation</strong>
-              <p>Average traffic volume, speed, congestion, and travel time index remain uniform across different weather conditions.</p>
+              <strong>Key Observation</strong>
+              <p>Traffic metrics remain remarkably uniform across clear, rainy, and fog conditions.</p>
             </div>
             <div class="info-block">
-              <strong>Evidence</strong>
-              <p>Average congestion is 80.54% under Rainy conditions vs 80.72% under Clear conditions (a difference of -0.23%). Average speed is 39.28 km/h in rain vs 39.47 km/h in clear weather.</p>
+              <strong>Key Insight</strong>
+              <p>Average congestion in rain is 80.54% vs 80.72% in clear conditions (a minor -0.23% difference).</p>
             </div>
             <div class="info-block">
-              <strong>Insight</strong>
-              <p>Weather conditions show only minor variation in congestion levels within this dataset, suggesting location and traffic volume are stronger predictors.</p>
-            </div>
-            <div class="info-block">
-              <strong>Recommendation</strong>
-              <p>Maintain standard road designs and signal timings during rain, but focus on drainage at major hotspots to prevent localized flooding from causing blockages.</p>
+              <strong>Implication</strong>
+              <p>Standard signal timing remains effective; focus should shift to localized drainage to prevent spot flooding.</p>
             </div>
           </div>
         </div>
@@ -515,133 +433,86 @@
           <div class="chart-info">
             <h3>7. Traffic Volume by Day of Week</h3>
             <div class="info-block">
-              <strong>Observation</strong>
-              <p>Traffic volume remains consistently high throughout the entire week, with weekends only slightly lower than weekdays.</p>
+              <strong>Key Observation</strong>
+              <p>Daily traffic volume is consistently high across all seven days of the week.</p>
             </div>
             <div class="info-block">
-              <strong>Evidence</strong>
-              <p>Average weekday traffic volume is 29,297 vehicles, while weekend volume is 29,084 vehicles, representing a marginal difference of 0.73%.</p>
+              <strong>Key Insight</strong>
+              <p>Weekdays average 29,297 vehicles, which is just 0.73% higher than the weekend average of 29,084.</p>
             </div>
             <div class="info-block">
-              <strong>Insight</strong>
-              <p>Weekday traffic is only marginally higher, suggesting congestion is persistent throughout the week due to retail, entertainment, and leisure travel matching commute volumes.</p>
-            </div>
-          <div class="info-block">
-              <strong>Recommendation</strong>
-              <p>Enforce weekday-level traffic management and policing schedules on weekends to handle the persistent high volume.</p>
+              <strong>Implication</strong>
+              <p>Commuting management policies and policing schedules must run actively on weekends to handle leisure volumes.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Insights Page -->
-    <section id="insights">
+    <!-- Findings Section -->
+    <section id="findings">
       <div class="section-header">
-        <h2>Key Findings</h2>
+        <h2>Research Findings & Conclusions</h2>
         <p>Quantified metrics and structural conclusions</p>
       </div>
 
       <div class="insights-grid">
         <div class="insight-item">
-          <div class="insight-icon">⏳</div>
-          <h3>Temporal Analysis Limitation</h3>
+          <h3>Traffic Pattern Analysis</h3>
           <div class="insight-data" id="insightPeak">Hourly analysis is not possible.</div>
-          <p class="insight-rec"><strong>Recommendation:</strong> Deploy local sub-daily telemetric traffic logging units to capture hourly commute variations.</p>
+          <p class="insight-rec">Hourly analysis is not possible because the dataset only contains daily timestamps.</p>
         </div>
 
         <div class="insight-item">
-          <div class="insight-icon">📍</div>
-          <h3>Hotspot Areas</h3>
+          <h3>Congestion Hotspots</h3>
           <div class="insight-data" id="insightHotspots">Major commercial and tech hubs represent the highest congestion levels.</div>
-          <p class="insight-rec"><strong>Recommendation:</strong> Prioritize high-capacity mass transit and roadway improvements specifically at these major economic hubs.</p>
+          <p class="insight-rec">Prioritize high-capacity mass transit and roadway improvements specifically at these major economic hubs.</p>
         </div>
 
         <div class="insight-item">
-          <div class="insight-icon">🌤️</div>
-          <h3>Weather Impact</h3>
-          <div class="insight-data" id="insightWeather">Weather conditions show only minor variation in congestion levels in this dataset.</div>
-          <p class="insight-rec"><strong>Recommendation:</strong> Focus dynamic routing resources on geographic bottlenecks rather than weather events.</p>
+          <h3>Weather Impact Assessment</h3>
+          <div class="insight-data" id="insightWeather">Weather conditions show only minor variation in congestion levels.</div>
+          <p class="insight-rec">Focus dynamic routing resources on geographic bottlenecks rather than weather events.</p>
         </div>
 
         <div class="insight-item">
-          <div class="insight-icon">📅</div>
-          <h3>Weekday vs Weekend</h3>
-          <div class="insight-data" id="insightDay">Weekday commute volumes exceed weekend levels marginally.</div>
-          <p class="insight-rec"><strong>Recommendation:</strong> Enforce weekday-level traffic policing and routing plans on weekends to manage persistent leisure/retail volumes.</p>
-        </div>
-
-        <div class="insight-item">
-          <div class="insight-icon">⚡</div>
-          <h3>Volume-Speed Relationship</h3>
+          <h3>Volume-Speed Correlation</h3>
           <div class="insight-data" id="insightSpeed">Strong negative correlation showing speed drops under high volume.</div>
-          <p class="insight-rec"><strong>Recommendation:</strong> Introduce smart congestion pricing zones to disincentivize single-occupancy vehicle travel during high-volume spikes.</p>
+          <p class="insight-rec">Introduce smart congestion pricing zones to disincentivize single-occupancy vehicle travel during high-volume spikes.</p>
         </div>
       </div>
 
-      <div class="conclusions-card">
-        <h3>Strategic Conclusions</h3>
-        <p>
-          The data clearly demonstrates that Bengaluru's traffic congestion is not uniform. It is heavily localized around specific economic hotspots like Koramangala, M.G. Road, and Indiranagar, and displays minimal variation across weather conditions or weekday-weekend cycles.
-        </p>
-        <p>
-          Furthermore, weather acts as a minor disruptor relative to localized road design bottlenecks. When rainfall occurs, congestion levels change by only -0.23% in our dataset, showing that capacity density and geographic hotspots are much stronger predictors of congestion.
-        </p>
-        <p>
-          Addressing this gridlock requires moving away from adding raw road capacity (which induces more demand) and instead focusing infrastructure investments, mass transit routing, and demand management directly on these high-congestion economic zones.
-        </p>
-      </div>
-    </section>
-
-    <!-- Recommendations Page -->
-    <section id="recommendations">
-      <div class="section-header">
-        <h2>Strategic Recommendations</h2>
-        <p>A phased, actionable roadmap for Bengaluru's transport grid</p>
-      </div>
-
-      <div class="timeline">
-        <!-- Short Term -->
-        <div class="timeline-card short-term">
-          <div class="timeline-badge">Short-term (0-6 months)</div>
-          <h3>Tactical Interventions</h3>
-          <ul>
-            <li>Deploy extra traffic marshals and response teams to Koramangala, M.G. Road, and Indiranagar junctions during commute hours.</li>
-            <li>Conduct maintenance checks on road drainage systems at major hotspots to prevent monsoon gridlocks.</li>
-            <li>Launch public awareness campaigns for signal compliance and lane discipline.</li>
-          </ul>
+      <div class="conclusions-grid">
+        <div class="conclusion-item">
+          <h4>Finding 1: High Weekly Traffic Persistence</h4>
+          <p>Analysis shows traffic volumes remain consistently high throughout the entire week. Weekday volume is only 0.73% higher than weekend volume, demonstrating that retail, entertainment, and leisure travel generate congestion levels comparable to standard office commutes.</p>
         </div>
-
-        <!-- Medium Term -->
-        <div class="timeline-card medium-term">
-          <div class="timeline-badge">Medium-term (6-12 months)</div>
-          <h3>Systemic Optimizations</h3>
-          <ul>
-            <li>Incentivize large corporate parks to stagger office login/logout times by 1-2 hours.</li>
-            <li>Establish dedicated bus corridors and micro-mobility stations connecting to major metro hubs.</li>
-            <li>Introduce smart parking systems to reduce cruising traffic searching for parking spaces.</li>
-          </ul>
+        <div class="conclusion-item">
+          <h4>Finding 2: Highly Localized Bottlenecks</h4>
+          <p>Severe congestion is concentrated in primary economic and IT clusters. Koramangala, M.G. Road, and Indiranagar represent the highest congestion indices, indicating that transit planning and funding must prioritize these specific geographic areas.</p>
         </div>
-
-        <!-- Long Term -->
-        <div class="timeline-card long-term">
-          <div class="timeline-badge">Long-term (1+ years)</div>
-          <h3>Structural Reforms</h3>
-          <ul>
-            <li>Because Koramangala, M.G. Road, and Indiranagar account for the highest congestion levels, infrastructure investment and metro rail expansions should be prioritized in these locations.</li>
-            <li>Implement congestion pricing zones in central business districts during peak times.</li>
-            <li>Transition to unified, AI-driven smart traffic management systems.</li>
-          </ul>
+        <div class="conclusion-item">
+          <h4>Finding 3: Negligible Weather Impact</h4>
+          <p>Rainy weather conditions display only minor variation in traffic congestion metrics compared to clear conditions. This indicates that capacity limitations and geographical constraints are the primary drivers of traffic density rather than environmental factors.</p>
+        </div>
+        <div class="conclusion-item">
+          <h4>Finding 4: Volume-Speed Collapse</h4>
+          <p>A strong negative non-linear relationship exists between traffic volume and average speed. Once volume crosses a critical density threshold, speeds collapse to a hard floor of 20.00 km/h, highlighting a severe breakdown in road network efficiency.</p>
+        </div>
+        <div class="conclusion-item future-work-card">
+          <h4>Future Work & Academic Scope</h4>
+          <p>To address the limitations of the current dataset, future research should integrate fine-grained, sub-daily (hourly) telemetric traffic logs to analyze peak commute hour shifts. Additionally, combining road sensor metrics with public transit passenger flows (metro and bus ticketing) would enable a comprehensive multi-modal transit analysis.</p>
         </div>
       </div>
     </section>
 
-    <!-- Limitations Page -->
+    <!-- Limitations Section -->
     <section id="limitations">
       <div class="section-header">
-        <h2>Project Limitations</h2>
+        <h2>Project Limitations & Profile</h2>
         <p>Documenting constraints to maintain research integrity</p>
       </div>
+
       <div class="limitations-container">
         <ul>
           <li><strong>Daily Timestamps Only:</strong> The source dataset contains only daily-level dates (YYYY-MM-DD). Hourly traffic analysis was not possible.</li>
@@ -650,52 +521,8 @@
           <li><strong>Public Transit Integration:</strong> There is no connection with rail or bus ticketing volumes, limiting multi-modal transit analysis.</li>
         </ul>
       </div>
-    </section>
 
-    <!-- Executive Summary Page -->
-    <section id="summary">
-      <div class="section-header">
-        <h2>Executive Summary</h2>
-        <p>Key statistics and primary urban mobility conclusions</p>
-      </div>
-      <div class="summary-cards">
-        <div class="summary-card">
-          <h3>8,936</h3>
-          <p>Dataset Records</p>
-        </div>
-        <div class="summary-card">
-          <h3>Koramangala (93.99%)</h3>
-          <p>Top Hotspot</p>
-        </div>
-        <div class="summary-card">
-          <h3>Minimal (-0.23%)</h3>
-          <p>Weather Impact</p>
-        </div>
-        <div class="summary-card">
-          <h3>0.73% Higher</h3>
-          <p>Weekday vs. Weekend Traffic</p>
-        </div>
-        <div class="summary-card">
-          <h3>-0.3411</h3>
-          <p>Volume-Speed Correlation</p>
-        </div>
-      </div>
-      <div class="summary-conclusion-card">
-        <h3>Primary Conclusion</h3>
-        <p>
-          Congestion in Bengaluru is driven more by geographic hotspots and traffic density than by weather conditions or workweek cycles. High-capacity mass transit systems and localized infrastructure interventions should be focused directly on major tech hubs like Koramangala, M.G. Road, and Indiranagar, which consistently experience average congestion levels above 85% regardless of weather or day of the week.
-        </p>
-      </div>
-    </section>
-
-    <!-- About Page -->
-    <section id="about">
-      <div class="section-header">
-        <h2>About the Project</h2>
-        <p>Technologies, authorship, and repository details</p>
-      </div>
-
-      <div class="about-grid">
+      <div class="about-grid" style="margin-top: 3rem;">
         <div class="about-card">
           <h3>Project Profile</h3>
           <p>This data science project was developed to complete an end-to-end traffic analysis, utilizing statistical modeling and visualization to deliver urban planning recommendations for Bengaluru.</p>
@@ -717,20 +544,6 @@
             <span class="tech-tag">Vanilla JS</span>
           </div>
         </div>
-
-        <div class="about-card">
-          <h3>Skills Demonstrated</h3>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Pandas</span>
-            <span class="tech-tag">NumPy</span>
-            <span class="tech-tag">Data Cleaning</span>
-            <span class="tech-tag">EDA</span>
-            <span class="tech-tag">Statistical Analysis</span>
-            <span class="tech-tag">Data Visualization</span>
-            <span class="tech-tag">Web Development</span>
-          </div>
-        </div>
       </div>
     </section>
   </main>
@@ -739,20 +552,15 @@
   <footer>
     <div class="footer-content">
       <div class="footer-logo">
-        🚗 BlrTraffic<span>Insight</span>
+        BlrTraffic<span>Insight</span>
       </div>
       <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#problem">Problem</a>
+        <a href="#overview">Overview</a>
         <a href="#dataset">Dataset</a>
-        <a href="#cleaning">Cleaning</a>
         <a href="#methodology">Methodology</a>
         <a href="#analysis">Analysis</a>
-        <a href="#insights">Insights</a>
-        <a href="#recommendations">Recommendations</a>
+        <a href="#findings">Findings</a>
         <a href="#limitations">Limitations</a>
-        <a href="#summary">Summary</a>
-        <a href="#about">About</a>
       </div>
     </div>
     <p class="copy">&copy; 2026 Bengaluru Traffic Congestion Analysis. All rights reserved.</p>
@@ -771,7 +579,7 @@
     window.addEventListener("scroll", () => {
       const sections = document.querySelectorAll("section");
       const navItems = document.querySelectorAll(".nav-links a");
-      let currentSectionId = "home";
+      let currentSectionId = "overview";
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop - 80;
@@ -799,7 +607,7 @@
           document.getElementById("statTopInsight").innerText = data.finding_2.hotspots[0].area;
 
           // Update insights sections
-          document.getElementById("insightPeak").innerText = data.finding_1.note || "Hourly analysis was not possible because the dataset only contains daily timestamps.";
+          document.getElementById("insightPeak").innerText = "Hourly analysis was not possible because the dataset only contains daily timestamps.";
           
           let hotspotsText = "Top areas: " + data.finding_2.hotspots.map(h => `${h.area} (${h.congestion.toFixed(1)}%)`).join(", ");
           document.getElementById("insightHotspots").innerText = hotspotsText;

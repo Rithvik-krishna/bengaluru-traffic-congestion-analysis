@@ -1,16 +1,18 @@
-# Bengaluru Traffic Congestion Analysis and Peak Hour Detection
+# Bengaluru Traffic Congestion Analysis
 
-## 📋 Project Overview
+An end-to-end data science analysis of historical traffic metrics across Bengaluru, diagnosing geographical hotspots, weather-induced delays, volume-speed dynamics, and weekly cycles.
 
-Bengaluru, India's preeminent tech metropolis, is home to a rapidly growing population and a massive transportation network that faces extreme daily traffic congestion. This project performs an end-to-end data science analysis of historical traffic metrics, diagnosing peak hourly commute patterns, geographical hotspots, weather-induced delays, and volume-speed dynamics to propose a series of data-driven, strategic urban mobility recommendations.
+## Project Overview
 
-## 🎯 Problem Statement
+Bengaluru, India's preeminent tech metropolis, is home to a rapidly growing population and a massive transportation network that faces extreme daily traffic congestion. This project performs a detailed data science analysis of historical traffic metrics, diagnosing congestion hotspots, weather-induced delays, and volume-speed dynamics to propose a series of data-driven, strategic urban mobility conclusions.
 
-Bengaluru experiences severe traffic congestion during peak hours, which significantly impacts daily commute times, increases fuel consumption, and degrades localized environmental air quality. Rapid economic expansion has led to vehicular demand outstripping the capacity of historical roadways, creating chronic gridlock across major commercial and IT corridors. 
+## Problem Statement
+
+Bengaluru experiences severe traffic congestion during peak hours, which significantly impacts daily commute times, increases fuel consumption, and degrades localized environmental air quality. Rapid economic expansion has led to vehicular demand outstripping the capacity of historical roadways, creating chronic gridlock across major commercial and IT corridors.
 
 This analysis aims to identify the underlying structural causes of congestion by investigating the relationship between traffic volume, average speed, capacity utilization, and weather conditions. Understanding these patterns enables urban planners to move from reactive capacity extension to proactive, intelligent traffic management and demand-side solutions.
 
-## 📊 Dataset
+## Dataset
 
 - **Total Records:** 8,936
 - **Total Features:** 16
@@ -18,7 +20,7 @@ This analysis aims to identify the underlying structural causes of congestion by
 - **Coverage:** 8 areas, 16 roads/intersections
 
 ### Features:
-1. `date` - Date and hour of traffic observation.
+1. `date` - Date of traffic observation (YYYY-MM-DD).
 2. `area_name` - The locality/area in Bengaluru (e.g., Koramangala, Indiranagar).
 3. `road_intersection_name` - The specific intersection or road name.
 4. `traffic_volume` - Estimated vehicle count during the observation interval.
@@ -35,73 +37,63 @@ This analysis aims to identify the underlying structural causes of congestion by
 15. `weather_conditions` - Weather at observation (Clear, Rain, Fog, Overcast, Windy).
 16. `roadwork_and_construction_activity` - Active construction markers (Yes / No).
 
-## 🔧 Data Cleaning
+## Project Methodology
 
-- **Missing Value Handling:** The raw dataset had 0 missing values initially. However, our pipeline ensures robust imputation where numeric missing values are forward-filled (and backward-filled if still missing) and categorical missing values are mode-imputed.
+1. **Dataset Collection:** Daily traffic observations across major routes.
+2. **Data Cleaning:** Validating nulls, duplicates, and standardizing schemas.
+3. **Feature Engineering:** Extracting day of week, month, quarter, and year temporal features.
+4. **Exploratory Data Analysis:** Analyzing statistical properties and correlations.
+5. **Visualization:** Generating high-resolution plots mapping urban trends.
+6. **Synthesis:** Drawing structured, data-grounded conclusions.
+
+## Data Cleaning
+
+- **Missing Value Handling:** Verified raw dataset had 0 missing values initially. The pipeline ensures robust imputation where numeric missing values are forward-filled (and backward-filled if still missing) and categorical missing values are mode-imputed.
 - **Duplicate Removal:** Checked for duplicate records (0 duplicates found) and enforced deduplication in-place.
 - **Column Standardization:** Converted all 16 raw column headers to lowercase and replaced spaces and slashes with underscores (e.g., "Road/Intersection Name" became "road_intersection_name").
-- **DateTime Conversion:** Parsed the `date` string to datetime objects and extracted standard components: `hour`, `day_of_week`, `month`, and `date_only` to support temporal trend analysis.
+- **DateTime Conversion:** Parsed the `date` string to datetime objects and extracted standard components: `day_of_week`, `month`, `quarter`, and `year` to support temporal trend analysis. Hourly analysis was omitted since the dataset contains daily-level granularity.
 
-## 📈 Exploratory Data Analysis
+## Exploratory Data Analysis
 
-### Key Findings:
-1. **Peak Traffic Hours:** N/A (Daily date granularity limitation). The source dataset contains only daily-level dates (YYYY-MM-DD), so sub-daily hourly peak commute volumes cannot be computed.
-2. **Hotspot Areas:** Top congested areas are Koramangala (94.0%), M.G. Road (90.6%), and Indiranagar (87.6%).
-3. **Weather Impact:** Average congestion is 80.54% under Rainy conditions vs 80.72% under Clear conditions (a difference of -0.23%).
-4. **Weekday vs Weekend:** Weekday traffic volume averages 29,297.2 vehicles, which is 0.73% higher than weekend volume of 29,084.0 vehicles.
-5. **Volume-Speed Relationship:** Moderate/weak negative correlation (-0.3411) showing average speeds drop by ~0.28 km/h for every 1000 vehicle increase.
+### Visualizations:
 
-## 📊 Visualizations
+1. **Traffic Volume Distribution (Histogram)**
+   ![Traffic Volume Distribution](outputs/histogram_traffic_volume.png)
+   Insight: Volume follows a right-skewed normal distribution, averaging 29,236 vehicles, with a wide standard deviation.
 
-### 1. Traffic Volume Distribution (Histogram)
-![Traffic Volume Distribution](outputs/histogram_traffic_volume.png)
-Insight: Shows a right-skewed normal distribution centered around 29,000 vehicles, indicating stable average flow with significant outlier periods.
+2. **Congestion Level Distribution (Boxplot)**
+   ![Congestion Level Distribution](outputs/boxplot_congestion_level.png)
+   Insight: Median congestion level is high at 92.39%, representing chronic gridlock as the standard baseline state.
 
-### 2. Congestion Level Distribution (Boxplot)
-![Congestion Level Distribution](outputs/boxplot_congestion_level.png)
-Insight: High median congestion across records with outlier events representing complete intersection lockup.
+3. **Chronological Monthly Traffic Trend (Line Chart)**
+   ![Monthly Traffic Trend](outputs/lineplot_monthly_traffic.png)
+   Insight: Captures monthly average traffic volume fluctuations over the 2022-2024 period, capturing long-term growth and seasonal trends.
 
-### 3. Chronological Monthly Traffic Trend (Line Chart)
-![Monthly Traffic Trend](outputs/lineplot_monthly_traffic.png)
-Insight: Displays monthly average traffic volume fluctuations over the 2022-2024 period, capturing long-term growth and seasonal trends. Hourly analysis could not be performed because the dataset only contains daily timestamps.
+4. **Traffic Volume vs Speed (Scatter Plot)**
+   ![Traffic Volume vs Speed](outputs/scatterplot_volume_speed.png)
+   Insight: Average speed decays rapidly and non-linearly as traffic volume increases, showing a correlation coefficient of -0.3411.
 
-### 4. Traffic Volume vs Speed (Scatter Plot)
-![Traffic Volume vs Speed](outputs/scatterplot_volume_speed.png)
-Insight: Reveals speed collapsing from over 40 km/h to under 20 km/h once volume crosses a critical capacity threshold.
+5. **Top 10 Most Congested Areas (Bar Chart)**
+   ![Top 10 Most Congested Areas](outputs/barchart_top_congested_areas.png)
+   Insight: Congestion is highly concentrated around major commercial and IT hubs, with Koramangala (93.99%), M.G. Road (90.58%), and Indiranagar (87.64%) being the top spots.
 
-### 5. Top 10 Most Congested Areas (Bar Chart)
-![Top 10 Most Congested Areas](outputs/barchart_top_congested_areas.png)
-Insight: Koramangala (94.0%) and M.G. Road (90.6%) lead the city in gridlock density.
+6. **Weather Impact Analysis (Subplots)**
+   ![Weather Impact Analysis](outputs/weather_impact_analysis.png)
+   Insight: Congestion level averages remain uniform across clear and rainy weather conditions (-0.23% difference), showing that capacity constraints drive gridlock more than weather.
 
-### 6. Weather Impact Analysis (Subplots)
-![Weather Impact Analysis](outputs/weather_impact_analysis.png)
-Insight: Average speed drops slightly under rainy conditions, while average congestion levels remain highly uniform (-0.23% difference between rainy and clear conditions).
+7. **Traffic Volume by Day of Week (Bar Chart)**
+   ![Traffic Volume by Day of Week](outputs/traffic_by_day_of_week.png)
+   Insight: Weekday traffic exceeds weekend traffic marginally (0.73% difference), showing congestion is persistent throughout the entire week.
 
-### 7. Traffic Volume by Day of Week (Bar Chart)
-![Traffic Volume by Day of Week](outputs/traffic_by_day_of_week.png)
-Insight: Weekday traffic exceeds weekend traffic, indicating job commutes as the primary driver of city congestion.
+## Research Findings & Conclusions
 
-## 💡 Key Insights
+- **Finding 1 (Weekly Persistence):** Weekend volume is only 0.73% lower than weekdays, showing congestion is persistent throughout the entire week.
+- **Finding 2 (Geographic Hotspots):** Congestion is heavily concentrated in major IT/commercial hubs: Koramangala (93.99%), M.G. Road (90.58%), and Indiranagar (87.64%).
+- **Finding 3 (Weather Impact Assessment):** Weather conditions have negligible impact (rain averages 80.54% vs clear at 80.72%, a difference of -0.23%).
+- **Finding 4 (Volume-Speed Correlation):** Strong negative correlation (-0.3411) showing average speed collapses to a floor of 20 km/h under high volumes.
+- **Future Work:** Deployment of sub-daily telemetric traffic logs and integration of public transit metro/bus passenger flows.
 
-- **Peak Commute Limitation:** The dataset contains daily-level dates (YYYY-MM-DD), which prevents sub-daily peak commute hour modeling. Peak hours are marked as N/A.
-- **Economic Hotspots:** Koramangala, M.G. Road, and Indiranagar are severe bottleneck hubs, requiring prioritized infrastructure and mass transit routing.
-- **Weather Resilience:** Rainy conditions see traffic volume and congestion remain high and steady, indicating that demand does not drop, but average speeds decay slightly.
-
-## 🎯 Recommendations
-
-### Short-term (0-6 months):
-- Deploy additional traffic personnel at the top 3 hotspot junctions during evening peaks.
-- Implement weather-adaptive signal timing plans that adjust cycle length during rain.
-
-### Medium-term (6-12 months):
-- Encourage tech companies to implement staggered login/logout schedules or hybrid work policies.
-- Establish dedicated bus lanes on major IT corridors.
-
-### Long-term (1+ years):
-- Expand metro lines to connect major residential hubs with Koramangala and M.G. Road.
-- Implement congestion pricing for private vehicles entering the Central Business District during peak hours.
-
-## ⚠️ Assumptions & Limitations
+## Assumptions & Limitations
 
 ### Assumptions:
 1. Dataset accurately represents Bengaluru traffic patterns.
@@ -117,15 +109,7 @@ Insight: Weekday traffic exceeds weekend traffic, indicating job commutes as the
 4. Air quality indices are calculated metrics rather than directly measured.
 5. Integration with city public transport network volumes is not included.
 
-## 🚀 Future Improvements
-
-1. Real-time traffic prediction using Machine Learning (ML).
-2. Route optimization algorithms.
-3. Integration with public transport data.
-4. Incident detection system.
-5. External events correlation.
-
-## 📚 Technologies Used
+## Technologies Used
 
 - Python 3.11
 - Pandas (data manipulation)
@@ -134,7 +118,7 @@ Insight: Weekday traffic exceeds weekend traffic, indicating job commutes as the
 - Jupyter Notebook (analysis)
 - HTML5, CSS3, & Vanilla JS (insights dashboard website)
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 bengaluru-traffic-congestion-analysis/
@@ -163,19 +147,11 @@ bengaluru-traffic-congestion-analysis/
 └── requirements.txt
 ```
 
-## 👨💻 Author
+## Author
 
 Applied Data Science Student  
 June 2026
 
-## 📄 License
+## License
 
 This project is for educational purposes.
-
-## 🤝 Contributing
-
-Contributions welcome! Please feel free to submit pull requests.
-
-## 📧 Contact
-
-For questions or suggestions, please contact the project maintainers.
