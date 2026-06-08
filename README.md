@@ -149,7 +149,7 @@ bengaluru-traffic-congestion-analysis/
 
 ## Author
 
-Applied Data Science Student  
+Rithvik Krishna DK  
 June 2026
 
 ## License
