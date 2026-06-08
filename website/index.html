@@ -8,25 +8,28 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">
+  <!-- Left Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
       BlrTraffic<span>Insight</span>
     </div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#overview" class="active">Overview</a></li>
-      <li><a href="#dataset">Dataset</a></li>
-      <li><a href="#methodology">Methodology</a></li>
-      <li><a href="#analysis">Analysis</a></li>
-      <li><a href="#findings">Findings</a></li>
-      <li><a href="#limitations">Limitations</a></li>
-    </ul>
+    <nav class="sidebar-nav" id="sidebarNav">
+      <a href="#overview" class="active">Overview</a>
+      <a href="#dataset">Dataset</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#analysis">Analysis</a>
+      <a href="#findings">Findings</a>
+      <a href="#limitations">Limitations</a>
+    </nav>
     <div class="menu-toggle" id="mobileMenu" onclick="toggleMenu()">
       <span></span>
       <span></span>
       <span></span>
     </div>
-  </nav>
+    <div class="sidebar-footer">
+      Rithvik Krishna DK
+    </div>
+  </aside>
 
   <main>
     <!-- Overview Section -->
@@ -37,33 +40,33 @@
           Analysis of 8,936 traffic observations across Bengaluru from 2022–2024.<br>
           Most Congested Area: Koramangala (93.99%) | Volume-Speed Correlation: -0.341 | Dataset Granularity: Daily
         </p>
+
+        <div class="quick-stats">
+          <div class="stat-item">
+            <h3 id="statRecords">8,936</h3>
+            <p>Traffic Records</p>
+          </div>
+          <div class="stat-item">
+            <h3>16</h3>
+            <p>Features Analyzed</p>
+          </div>
+          <div class="stat-item">
+            <h3 id="statDateRange">2022–2024</h3>
+            <p>Coverage Years</p>
+          </div>
+          <div class="stat-item">
+            <h3 id="statTopInsight">Koramangala</h3>
+            <p>Top Congestion Hotspot</p>
+          </div>
+        </div>
         
         <div class="cta-group">
           <a href="#analysis" class="btn btn-primary">View Analysis</a>
           <a href="../docs/executive_summary.txt" download class="btn btn-secondary">Download Report</a>
         </div>
-
-        <div class="quick-stats">
-          <div class="stat-item">
-            <h3 id="statRecords">8,936</h3>
-            <p>Records</p>
-          </div>
-          <div class="stat-item">
-            <h3>16</h3>
-            <p>Features</p>
-          </div>
-          <div class="stat-item">
-            <h3 id="statDateRange">2022–2024</h3>
-            <p>Temporal Span</p>
-          </div>
-          <div class="stat-item">
-            <h3 id="statTopInsight">Koramangala</h3>
-            <p>Top Hotspot</p>
-          </div>
-        </div>
       </div>
 
-      <div class="overview-grid" style="margin-top: 3rem;">
+      <div class="overview-grid">
         <div class="overview-text">
           <p>
             Bengaluru, known globally as the tech hub of India, has witnessed rapid economic growth and urbanization over the past few decades. However, this growth has placed severe strain on its transportation infrastructure. The city suffers from chronic congestion that results in billions of hours lost, millions of liters of wasted fuel, and significant environmental degradation.
@@ -76,14 +79,23 @@
           </p>
         </div>
         <div class="objectives-card">
-          <h3>Analysis Objectives</h3>
-          <ul>
-            <li>Examine historical traffic trends and identify long-term patterns across months.</li>
-            <li>Identify the most congested bottleneck coordinates and hotspots across Bengaluru.</li>
-            <li>Quantify the impact of rainy weather conditions on traffic speeds and grid delays.</li>
-            <li>Evaluate weekday versus weekend traffic variations and calculate commute deviations.</li>
-            <li>Model the traffic volume-speed relationship to predict critical capacity breakdown levels.</li>
+          <h3>Executive Summary</h3>
+          <ul class="summary-list">
+            <li><strong>8,936</strong> observations analyzed across major transit corridors.</li>
+            <li><strong>Koramangala</strong> is the most congested area (93.99% average).</li>
+            <li><strong>Weather</strong> has a limited impact on daily congestion levels (-0.23% delta).</li>
+            <li><strong>Traffic volume</strong> negatively correlates with speed (r = -0.341).</li>
+            <li><strong>Daily Granularity:</strong> Dataset supports daily, not hourly analysis.</li>
           </ul>
+          <div class="summary-stats-box" style="margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border);">
+            <div style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--secondary);"><strong>Key Findings Quick Reference</strong></div>
+            <div style="font-size: 0.9rem; line-height: 1.6; color: var(--text);">
+              Most Congested Area: <strong>Koramangala (93.99%)</strong><br>
+              Volume-Speed Correlation: <strong>-0.341</strong><br>
+              Weekday Traffic: <strong>0.73% higher</strong><br>
+              Weather Impact: <strong>Minimal (-0.23%)</strong>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -279,8 +291,8 @@
         </div>
         <div class="methodology-step">
           <div class="step-num">Step 6</div>
-          <h4>Insights</h4>
-          <p>Drawing structured, data-grounded conclusions.</p>
+          <h4>Findings</h4>
+          <p>Formulating final academic conclusions.</p>
         </div>
       </div>
     </section>
@@ -564,25 +576,28 @@
       </div>
     </div>
     <p class="copy">&copy; 2026 Bengaluru Traffic Congestion Analysis. All rights reserved.</p>
+    <p class="footer-note" style="margin-top: 1.5rem; font-size: 0.8rem; color: #64748B;">
+      This project was developed as part of the Applied Data Science Foundations Sprint using Python, Pandas, NumPy, Matplotlib, and Jupyter Notebook.
+    </p>
   </footer>
 
   <script>
     // Toggle Mobile Navigation Menu
     function toggleMenu() {
-      const navLinks = document.getElementById("navLinks");
+      const sidebarNav = document.getElementById("sidebarNav");
       const mobileMenu = document.getElementById("mobileMenu");
-      navLinks.classList.toggle("active");
+      sidebarNav.classList.toggle("active");
       mobileMenu.classList.toggle("active");
     }
 
     // Dynamic Navigation Active Link Highlight on Scroll
     window.addEventListener("scroll", () => {
       const sections = document.querySelectorAll("section");
-      const navItems = document.querySelectorAll(".nav-links a");
+      const navItems = document.querySelectorAll(".sidebar-nav a");
       let currentSectionId = "overview";
 
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 80;
+        const sectionTop = section.offsetTop - 100;
         if (window.scrollY >= sectionTop) {
           currentSectionId = section.getAttribute("id");
         }
