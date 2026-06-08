@@ -741,3 +741,122 @@ footer p.copy {
     padding: 4rem 5% 3rem 5%;
   }
 }
+
+/* Methodology Grid */
+.methodology-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.methodology-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.methodology-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-blue);
+}
+
+.m-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.methodology-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-blue);
+}
+
+.methodology-card p {
+  font-size: 0.85rem;
+  color: #5C6B73;
+}
+
+/* Limitations Section */
+.limitations-container {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.limitations-container ul {
+  list-style: none;
+}
+
+.limitations-container li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  color: var(--text-color);
+}
+
+.limitations-container li::before {
+  content: '⚠';
+  position: absolute;
+  left: 0;
+  color: var(--danger-red);
+  font-weight: bold;
+}
+
+/* Summary Cards */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.summary-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.summary-card h3 {
+  font-size: 1.8rem;
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem;
+}
+
+.summary-card p {
+  font-size: 0.95rem;
+  color: #5C6B73;
+  font-weight: 600;
+}
+
+.summary-conclusion-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.summary-conclusion-card h3 {
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+}
+
+.summary-conclusion-card p {
+  font-size: 1.1rem;
+  color: #4A4E69;
+}
