@@ -1,0 +1,20 @@
+ASSUMPTIONS:
+1. Dataset represents Bengaluru daily traffic patterns across major transit links.
+2. Weather information is correctly recorded for each daily record.
+3. Traffic volume is estimated through daily road counting devices.
+4. Data collection methods remained standard over the period.
+5. External localized factors are assumed random.
+
+LIMITATIONS:
+1. NO HOURLY TIMESTAMPS: The dataset contains daily-level dates (YYYY-MM-DD). Daily aggregation prevents extracting sub-daily morning/evening peak hour trends.
+2. Geographical coverage is restricted to 8 key areas in Bengaluru.
+3. Specific traffic incidents (crashes, construction) are represented as daily aggregate counts.
+4. Air quality indices are calculated metrics rather than directly measured.
+5. Integration with city public transport network volumes is not included.
+
+FUTURE IMPROVEMENTS:
+1. Upgrade collection to log 15-minute sub-daily intervals.
+2. Merge with real-time GPS probe and metro ticketing data.
+3. Apply predictive ML models for localized speed forecasting.
+4. Build rain gauge sensors to capture localized weather intensity.
+5. Build an incident management correlation model.

@@ -1,0 +1,34 @@
+🚗 FINDING 1: PEAK TRAFFIC HOURS (DATASET LIMITATION)
+Hourly analysis could not be performed because the dataset only contains daily timestamps.
+
+RECOMMENDATION: Deploy local sub-daily telemetric traffic logging units to capture hourly commute variations.
+
+📍 FINDING 2: HOTSPOT AREAS
+Top 5 Most Congested Areas:
+1. Koramangala (93.99%)
+2. M.G. Road (90.58%)
+3. Indiranagar (87.64%)
+4. Hebbal (80.09%)
+5. Jayanagar (77.00%)
+
+RECOMMENDATION: Prioritize transit-oriented infrastructure development and metro expansion in these specific zones.
+
+🌤️ FINDING 3: WEATHER IMPACT
+Average Congestion (Clear): 80.72%
+Average Congestion (Rainy): 80.54%
+Increase during rain: -0.23%
+
+RECOMMENDATION: Ensure drainage maintenance in key areas to prevent monsoon delays and keep traffic uniform.
+
+📅 FINDING 4: WEEKDAY vs WEEKEND
+Weekday Average Volume: 29297.2 vehicles
+Weekend Average Volume: 29084.0 vehicles
+Weekday traffic is 0.73% higher
+
+RECOMMENDATION: Promote staggered workspace policies and remote work hybrid schedules to flatten the commute curve.
+
+⚡ FINDING 5: VOLUME-SPEED RELATIONSHIP
+Correlation (Volume vs Speed): -0.3411 (Moderate/Weak Negative)
+Interpretation: For every 1000 vehicles increase, average speed decreases by ~0.28 km/h
+
+RECOMMENDATION: Implement congestion management systems and intelligent signals to prevent roads from crossing congestion thresholds.
