@@ -155,3 +155,107 @@ June 2026
 ## License
 
 This project is for educational purposes.
+
+---
+
+## Machine Learning Extension
+
+A machine learning module has been added to predict **Congestion Level** from the existing traffic features. All ML work is contained in a new branch (`feature/ml-extension`) and does not modify the original analysis.
+
+### Problem Statement
+
+Given a set of daily traffic observations — including volume, speed, weather, road capacity utilisation, and area — predict the **congestion level** (a continuous percentage value from 0–100%). This is a **supervised regression** problem because the target variable is continuous.
+
+### Models Used
+
+| Model | Type | Role |
+|---|---|---|
+| Linear Regression | Parametric | Baseline model |
+| Random Forest Regressor | Ensemble (200 trees) | Primary predictive model |
+
+### Evaluation Metrics
+
+Three standard regression metrics were used:
+- **MAE** (Mean Absolute Error) — average absolute prediction error in percentage points.
+- **RMSE** (Root Mean Squared Error) — penalises large errors more heavily.
+- **R² Score** — proportion of variance in congestion level explained by the model.
+
+### Results
+
+| Model | MAE | RMSE | R² Score |
+|---|---|---|---|
+| Linear Regression | 5.3636 | 6.6590 | 0.9180 |
+| **Random Forest** | **2.8543** | **4.3355** | **0.9653** |
+
+The Random Forest model achieved a higher R² score and lower prediction error, making it the preferred model for congestion prediction.
+
+### Feature Importance
+
+Top 10 most important features (Random Forest Gini importance):
+
+| Rank | Feature | Importance |
+|---|---|---|
+| 1 | Traffic Volume | 0.5270 |
+| 2 | Environmental Impact | 0.4388 |
+| 3 | Road Capacity Utilization | 0.0071 |
+| 4 | Parking Usage | 0.0040 |
+| 5 | Public Transport Usage | 0.0039 |
+| 6 | Average Speed | 0.0038 |
+| 7 | Pedestrian and Cyclist Count | 0.0036 |
+| 8 | Traffic Signal Compliance | 0.0035 |
+| 9 | Incident Reports | 0.0027 |
+| 10 | Travel Time Index | 0.0026 |
+
+Traffic Volume and Environmental Impact together account for ~96.5% of total feature importance.
+
+### ML Outputs
+
+- `outputs/ml_actual_vs_predicted.png` — Scatter plot: Actual vs Predicted congestion levels.
+- `outputs/ml_feature_importance.png` — Horizontal bar chart: Top 10 feature importances.
+- `docs/ml_metrics.json` — Machine-readable metrics for website integration.
+- `docs/ml_viva_notes.txt` — Professor-ready Q&A documentation.
+- `notebooks/ml_congestion_prediction.py` — Standalone ML training script.
+
+### Future Improvements
+
+1. **Hourly Data Integration**: Sub-daily timestamps would enable peak-hour prediction models.
+2. **Cross-Validation**: K-fold CV would yield more robust generalization estimates.
+3. **Gradient Boosting**: XGBoost or LightGBM could further reduce RMSE.
+4. **Time-Series Models**: LSTM or ARIMA could capture day-to-day temporal dependencies.
+5. **Hyperparameter Tuning**: GridSearchCV / RandomizedSearchCV on Random Forest parameters.
+6. **Real-Time Deployment**: Wrap the model in a FastAPI endpoint for live congestion prediction.
+
+### Updated Project Structure
+
+```
+bengaluru-traffic-congestion-analysis/
+├── raw_data/
+│   └── Banglore_traffic_Dataset.csv
+├── processed_data/
+│   └── cleaned_traffic_data.csv
+├── notebooks/
+│   ├── traffic_analysis.ipynb
+│   └── ml_congestion_prediction.py          ← NEW
+├── outputs/
+│   ├── histogram_traffic_volume.png
+│   ├── boxplot_congestion_level.png
+│   ├── lineplot_monthly_traffic.png
+│   ├── scatterplot_volume_speed.png
+│   ├── barchart_top_congested_areas.png
+│   ├── weather_impact_analysis.png
+│   ├── traffic_by_day_of_week.png
+│   ├── ml_actual_vs_predicted.png           ← NEW
+│   └── ml_feature_importance.png            ← NEW
+├── website/
+│   ├── index.html                           ← UPDATED (ML section added)
+│   └── style.css                            ← UPDATED (ML styles added)
+├── docs/
+│   ├── key_findings.txt
+│   ├── assumptions_limitations.txt
+│   ├── executive_summary.txt
+│   ├── insights_data.json
+│   ├── ml_metrics.json                      ← NEW
+│   └── ml_viva_notes.txt                    ← NEW
+├── README.md                                ← UPDATED
+└── requirements.txt                         ← UPDATED (scikit-learn added)
+```
