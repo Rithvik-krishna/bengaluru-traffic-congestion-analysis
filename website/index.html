@@ -21,6 +21,7 @@
       <a href="#findings">Findings</a>
       <a href="#recommendations">Recommendations</a>
       <a href="#limitations">Limitations</a>
+      <a href="#machine-learning">Machine Learning</a>
     </nav>
     <div class="menu-toggle" id="mobileMenu" onclick="toggleMenu()">
       <span></span>
@@ -294,6 +295,11 @@
           <div class="step-num">Step 6</div>
           <h4>Findings</h4>
           <p>Formulating final academic conclusions.</p>
+        </div>
+        <div class="methodology-step">
+          <div class="step-num">Step 7</div>
+          <h4>ML Prediction</h4>
+          <p>Training regression models to predict congestion level.</p>
         </div>
       </div>
     </section>
@@ -828,6 +834,7 @@
             <span class="tech-tag">NumPy</span>
             <span class="tech-tag">Matplotlib</span>
             <span class="tech-tag">Seaborn</span>
+            <span class="tech-tag">Scikit-Learn</span>
             <span class="tech-tag">Jupyter Notebooks</span>
             <span class="tech-tag">HTML5 & CSS3</span>
             <span class="tech-tag">Vanilla JS</span>
@@ -835,6 +842,225 @@
         </div>
       </div>
     </section>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- Machine Learning Section                                   -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <section id="machine-learning">
+      <div class="section-header">
+        <h2>Machine Learning for Congestion Prediction</h2>
+        <p>Supervised regression models trained to predict congestion level from traffic features</p>
+      </div>
+
+      <!-- 1. Problem Definition -->
+      <h3 style="margin-bottom:1rem;">1. Problem Definition</h3>
+      <div class="conclusion-item" style="margin-bottom:2.5rem;">
+        <p>
+          This section applies supervised machine learning to predict <strong>Congestion Level</strong>
+          — a continuous numerical value (0–100%) — from 13 observable traffic features.
+          Because the target variable is continuous and not a category, this is a
+          <strong>regression problem</strong>. The goal is to build a model that, given a
+          daily snapshot of traffic conditions, can accurately estimate how congested a road
+          corridor will be.
+        </p>
+        <div style="margin-top:1rem;">
+          <div class="ml-step"><strong>Target Variable:</strong> Congestion Level (%)</div>
+          <div class="ml-step"><strong>Input Features (13):</strong> Traffic Volume, Average Speed, Travel Time Index, Road Capacity Utilization, Incident Reports, Environmental Impact, Public Transport Usage, Traffic Signal Compliance, Parking Usage, Pedestrian &amp; Cyclist Count, Weather Conditions, Roadwork Activity, Area Name</div>
+          <div class="ml-step"><strong>Train / Test Split:</strong> 80% Training (7,148 records) | 20% Testing (1,788 records) &mdash; random_state=42</div>
+          <div class="ml-step"><strong>Encoding:</strong> One-hot encoding with drop_first=True applied to Weather Conditions, Roadwork Activity, and Area Name</div>
+        </div>
+      </div>
+
+      <!-- 2. Models Used -->
+      <h3 style="margin-bottom:1rem;">2. Models Used</h3>
+      <div class="ml-models-grid" style="margin-bottom:2.5rem;">
+        <div class="ml-model-card">
+          <h4>Linear Regression</h4>
+          <span class="model-badge baseline">Baseline Model</span>
+          <p>
+            Linear Regression is the simplest and most interpretable regression algorithm.
+            It serves as the baseline, establishing a performance floor that the primary
+            model must surpass. It assumes a linear relationship between each feature and
+            the target variable, requires no hyperparameter tuning, and trains in seconds.
+            If a more complex model cannot beat it, the simpler model is preferred.
+          </p>
+        </div>
+        <div class="ml-model-card">
+          <h4>Random Forest Regressor</h4>
+          <span class="model-badge primary">Primary Model &mdash; 200 Trees</span>
+          <p>
+            Random Forest is an ensemble method that builds 200 independent decision trees
+            and averages their predictions, dramatically reducing overfitting and variance.
+            It captures non-linear relationships and complex feature interactions, handles
+            outliers robustly, requires no feature scaling, and provides built-in
+            <strong>feature importance scores</strong> via Gini impurity — making it both
+            powerful and interpretable for this traffic dataset.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3. Model Performance Table -->
+      <h3 style="margin-bottom:1rem;">3. Model Performance</h3>
+      <div class="ml-metrics-row">
+        <div class="ml-metric-card">
+          <div class="metric-label">Linear Regression &mdash; R&sup2;</div>
+          <div class="metric-value" id="mlLrR2">0.9180</div>
+          <div class="metric-sub">Baseline model</div>
+        </div>
+        <div class="ml-metric-card best">
+          <div class="metric-label">Random Forest &mdash; R&sup2;</div>
+          <div class="metric-value" id="mlRfR2">0.9653</div>
+          <div class="metric-sub">Best model</div>
+        </div>
+        <div class="ml-metric-card best">
+          <div class="metric-label">Random Forest &mdash; MAE</div>
+          <div class="metric-value" id="mlRfMae">2.85</div>
+          <div class="metric-sub">Percentage points</div>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="ml-comparison-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>MAE</th>
+              <th>RMSE</th>
+              <th>R&sup2; Score</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Linear Regression</td>
+              <td id="mlLrMaeTable">5.3636</td>
+              <td id="mlLrRmseTable">6.6590</td>
+              <td id="mlLrR2Table">0.9180</td>
+              <td>Baseline</td>
+            </tr>
+            <tr class="winner">
+              <td><strong>Random Forest Regressor</strong></td>
+              <td id="mlRfMaeTable">2.8543</td>
+              <td id="mlRfRmseTable">4.3355</td>
+              <td id="mlRfR2Table">0.9653</td>
+              <td><strong>Best Model</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ml-best-banner" id="mlSummaryBanner">
+        The Random Forest model achieved a higher R&sup2; score and lower prediction error,
+        making it the preferred model for congestion prediction. It explains
+        <strong>96.53%</strong> of the variance in congestion level with an average
+        prediction error of only <strong>2.85 percentage points</strong>.
+      </div>
+
+      <!-- 4 & 5. Visualizations -->
+      <h3 style="margin-bottom:1rem;">4. Visualizations</h3>
+      <div class="ml-viz-grid">
+
+        <!-- Actual vs Predicted -->
+        <div class="ml-viz-card">
+          <div class="ml-viz-img">
+            <img src="outputs/ml_actual_vs_predicted.png"
+                 alt="Actual vs Predicted Congestion Level — Random Forest">
+          </div>
+          <div class="ml-viz-info">
+            <h4>Actual vs Predicted Congestion Level</h4>
+            <div class="ml-insight">
+              <strong>Purpose</strong>
+              <p>Evaluates how closely the Random Forest model's predictions match
+                 real observed congestion values on the held-out test set.</p>
+            </div>
+            <div class="ml-insight">
+              <strong>Observation</strong>
+              <p>The scatter points cluster tightly along the red diagonal
+                 perfect-fit line, especially in the 70–100% congestion range
+                 where most real-world records fall.</p>
+            </div>
+            <div class="ml-insight">
+              <strong>Interpretation</strong>
+              <p>An R&sup2; of 0.9653 confirms excellent predictive accuracy.
+                 Small deviations from the diagonal represent the model's residual
+                 error (average MAE = 2.85 percentage points).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Importance -->
+        <div class="ml-viz-card">
+          <div class="ml-viz-img">
+            <img src="outputs/ml_feature_importance.png"
+                 alt="Top 10 Feature Importances — Random Forest">
+          </div>
+          <div class="ml-viz-info">
+            <h4>Feature Importance Analysis</h4>
+            <div class="ml-insight">
+              <strong>Purpose</strong>
+              <p>Identifies which input features contribute most to the model's
+                 predictions using Gini impurity scores from the Random Forest.</p>
+            </div>
+            <div class="ml-insight">
+              <strong>Observation</strong>
+              <p>Traffic Volume (52.7%) and Environmental Impact (43.9%) together
+                 account for ~96.5% of total importance. All remaining features
+                 contribute less than 1% each.</p>
+            </div>
+            <div class="ml-insight">
+              <strong>Interpretation</strong>
+              <p>Sheer vehicle count and its resulting emissions index are the
+                 dominant drivers of congestion. Weather, area, and roadwork
+                 activity are secondary factors in this dataset.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 6. Key Findings -->
+      <h3 style="margin-bottom:1rem;">5. Key Findings</h3>
+      <div class="ml-findings-grid">
+        <div class="ml-finding-item">
+          <h4>High Predictive Accuracy</h4>
+          <p>Random Forest achieved R&sup2; = 0.9653, explaining 96.53% of variance in
+             congestion level. This level of accuracy validates the predictive
+             power of the available traffic features.</p>
+        </div>
+        <div class="ml-finding-item">
+          <h4>Random Forest Beats Baseline by 47%</h4>
+          <p>The Random Forest reduced MAE from 5.36 (Linear Regression) to 2.85
+             — a 47% improvement. This confirms that congestion relationships
+             are non-linear and benefit from ensemble modelling.</p>
+        </div>
+        <div class="ml-finding-item">
+          <h4>Volume is the Primary Driver</h4>
+          <p>Traffic Volume alone accounts for 52.7% of predictive importance,
+             confirming the EDA finding that sheer vehicle count is the principal
+             cause of urban congestion in Bengaluru.</p>
+        </div>
+        <div class="ml-finding-item">
+          <h4>Environmental Impact is Co-Driver</h4>
+          <p>Environmental Impact (an emissions index derived from volume and speed)
+             contributes 43.9% of importance. This collinearity with volume
+             amplifies the model's sensitivity to traffic density signals.</p>
+        </div>
+        <div class="ml-finding-item">
+          <h4>Weather &amp; Area Play Minor Roles</h4>
+          <p>One-hot encoded weather and area features collectively account for
+             under 2% of feature importance, consistent with the EDA finding
+             that Bengaluru's congestion is geography-driven, not weather-driven.</p>
+        </div>
+        <div class="ml-finding-item">
+          <h4>Future Scope</h4>
+          <p>Hourly data, cross-validation, and gradient boosting (XGBoost,
+             LightGBM) could further reduce RMSE. A real-time inference API
+             would enable live congestion prediction for city planners.</p>
+        </div>
+      </div>
+
+    </section>
+
     <!-- Footer -->
     <footer>
       <div class="footer-content">
@@ -849,6 +1075,7 @@
           <a href="#findings">Findings</a>
           <a href="#recommendations">Recommendations</a>
           <a href="#limitations">Limitations</a>
+          <a href="#machine-learning">Machine Learning</a>
         </div>
       </div>
       <p class="copy">&copy; 2026 Bengaluru Traffic Congestion Analysis. All rights reserved.</p>
@@ -921,7 +1148,47 @@
           document.getElementById("insightDay").innerText = "Weekday traffic volume averages 29,297.2 vehicles, which is 0.73% higher than weekend volume of 29,084.0 vehicles.";
           document.getElementById("insightSpeed").innerText = "Correlation coefficient is -0.3411, indicating that speeds drop by ~0.28 km/h for every 1,000 additional vehicles.";
         });
+
+      // Load ML metrics from docs/ml_metrics.json
+      fetch("docs/ml_metrics.json")
+        .then(response => response.json())
+        .then(ml => {
+          const lr = ml.linear_regression;
+          const rf = ml.random_forest;
+
+          // Metric cards
+          document.getElementById("mlLrR2").innerText  = lr.r2.toFixed(4);
+          document.getElementById("mlRfR2").innerText  = rf.r2.toFixed(4);
+          document.getElementById("mlRfMae").innerText = rf.mae.toFixed(2);
+
+          // Table cells
+          document.getElementById("mlLrMaeTable").innerText  = lr.mae.toFixed(4);
+          document.getElementById("mlLrRmseTable").innerText = lr.rmse.toFixed(4);
+          document.getElementById("mlLrR2Table").innerText   = lr.r2.toFixed(4);
+          document.getElementById("mlRfMaeTable").innerText  = rf.mae.toFixed(4);
+          document.getElementById("mlRfRmseTable").innerText = rf.rmse.toFixed(4);
+          document.getElementById("mlRfR2Table").innerText   = rf.r2.toFixed(4);
+
+          // Summary banner
+          document.getElementById("mlSummaryBanner").innerHTML =
+            `${ml.summary} It explains <strong>${(rf.r2 * 100).toFixed(2)}%</strong> ` +
+            `of the variance in congestion level with an average prediction error of ` +
+            `only <strong>${rf.mae.toFixed(2)} percentage points</strong>.`;
+        })
+        .catch(() => {
+          // Static fallbacks — actual values from training
+          document.getElementById("mlLrR2").innerText  = "0.9180";
+          document.getElementById("mlRfR2").innerText  = "0.9653";
+          document.getElementById("mlRfMae").innerText = "2.85";
+          document.getElementById("mlLrMaeTable").innerText  = "5.3636";
+          document.getElementById("mlLrRmseTable").innerText = "6.6590";
+          document.getElementById("mlLrR2Table").innerText   = "0.9180";
+          document.getElementById("mlRfMaeTable").innerText  = "2.8543";
+          document.getElementById("mlRfRmseTable").innerText = "4.3355";
+          document.getElementById("mlRfR2Table").innerText   = "0.9653";
+        });
     });
   </script>
 </body>
 </html>
+

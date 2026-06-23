@@ -1,0 +1,58 @@
+{
+  "linear_regression": {
+    "mae": 5.3636,
+    "rmse": 6.659,
+    "r2": 0.918
+  },
+  "random_forest": {
+    "mae": 2.8543,
+    "rmse": 4.3355,
+    "r2": 0.9653
+  },
+  "best_model": "Random Forest",
+  "summary": "The Random Forest model achieved a higher R\u00b2 score and lower prediction error, making it the preferred model for congestion prediction.",
+  "top_features": [
+    {
+      "feature": "traffic_volume",
+      "importance": 0.526965
+    },
+    {
+      "feature": "environmental_impact",
+      "importance": 0.438765
+    },
+    {
+      "feature": "road_capacity_utilization",
+      "importance": 0.007089
+    },
+    {
+      "feature": "parking_usage",
+      "importance": 0.003954
+    },
+    {
+      "feature": "public_transport_usage",
+      "importance": 0.003884
+    },
+    {
+      "feature": "average_speed",
+      "importance": 0.003783
+    },
+    {
+      "feature": "pedestrian_and_cyclist_count",
+      "importance": 0.003567
+    },
+    {
+      "feature": "traffic_signal_compliance",
+      "importance": 0.003547
+    },
+    {
+      "feature": "incident_reports",
+      "importance": 0.002668
+    },
+    {
+      "feature": "travel_time_index",
+      "importance": 0.002624
+    }
+  ],
+  "train_size": 7148,
+  "test_size": 1788
+}
