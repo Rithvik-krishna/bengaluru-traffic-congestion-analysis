@@ -1,0 +1,63 @@
+=== HISTOGRAM - Traffic Volume Distribution ===
+Mean: 29236.05
+Median: 27600.00
+Std Dev: 13001.81
+Min: 4233.00
+Max: 72039.00
+IQR (Q1-Q3): 19413.00 - 38058.50 (IQR=18645.50)
+Human Insight: "Most traffic observations fall between 19413 and 38058 vehicles"
+
+=== BOXPLOT - Congestion Level Distribution ===
+Min Congestion: 5.16%
+Q1: 64.29%
+Median: 92.39%
+Q3: 100.00%
+Max Congestion: 100.00%
+IQR: 35.71%
+Outlier Count: 3
+Outlier Percentage: 0.03%
+Human Insight: "3 extreme congestion events detected. These represent severe traffic incidents."
+
+=== LINE CHART - Monthly Traffic Trend ===
+Monthly Average Range: 28174.35 to 30558.25 vehicles
+Lowest Traffic Month: 2023-12 (28174.3 vehicles)
+Highest Traffic Month: 2023-06 (30558.3 vehicles)
+Human Insight: "Chronological analysis shows traffic volumes peaked during certain periods, but overall volumes fluctuated over the 2022-2024 period. Hourly analysis could not be performed because the dataset only contains daily timestamps."
+
+=== SCATTER PLOT - Traffic Volume vs Speed ===
+Correlation: -0.3411 (Moderate/Weak Negative)
+Avg Speed: 39.45 km/h
+Max Speed: 89.79 km/h
+Min Speed: 20.00 km/h
+Human Insight: "The correlation is -0.3411. This moderate negative relationship shows speed declining as volume increases on individual corridors."
+
+=== BAR CHART - Top 10 Congested Areas ===
+Ranked Areas:
+1. Koramangala: 93.99%
+2. M.G. Road: 90.58%
+3. Indiranagar: 87.64%
+4. Hebbal: 80.09%
+5. Jayanagar: 77.00%
+6. Whitefield: 69.05%
+7. Yeshwanthpur: 62.37%
+8. Electronic City: 54.45%
+Human Insight: "Koramangala is the most congested area with an average level of 94.0%, indicating the need for immediate localized traffic interventions."
+
+=== WEATHER IMPACT ANALYSIS ===
+Weather Metrics Table:
+Weather | Traffic Volume | Avg Speed | Congestion Level | Travel Time Index
+---|---|---|---|---
+Clear | 29166.7 | 39.47 | 80.72% | 1.37
+Fog | 29183.3 | 39.47 | 81.61% | 1.38
+Overcast | 29053.5 | 39.43 | 80.30% | 1.38
+Rain | 29558.7 | 39.28 | 80.54% | 1.38
+Windy | 30163.2 | 39.52 | 82.37% | 1.38
+
+Human Insight: "Rainy weather average congestion is 80.54% vs Clear conditions at 80.72% (difference of -0.23%)."
+
+=== BAR CHART - Day of Week Traffic Volume ===
+Weekday Average Traffic: 29297.17 vehicles
+Weekend Average Traffic: 29083.98 vehicles
+Percentage Difference: 0.73%
+Human Insight: "Weekdays are 0.7% higher in traffic volume than weekends, reflecting typical commuting cycles."
+
