@@ -1365,3 +1365,371 @@ footer p.copy {
     grid-template-columns: 1fr;
   }
 }
+
+/* ── ML Section Titles ───────────────────────────── */
+.ml-section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 2.5rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border);
+}
+
+/* ── Feature Groups ──────────────────────────────── */
+.ml-feature-groups {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.ml-feat-group {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.ml-feat-group-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.ml-feat-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ml-feat-group ul li {
+  font-size: 0.85rem;
+  color: var(--text);
+  padding: 0.2rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.ml-feat-group ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+  .ml-feature-groups { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .ml-feature-groups { grid-template-columns: 1fr; }
+}
+
+/* ── ML Workflow Diagram ─────────────────────────── */
+.ml-workflow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  flex-wrap: wrap;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.ml-wf-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.9rem 0.85rem;
+  min-width: 90px;
+  font-size: 0.8rem;
+  color: var(--primary);
+  font-weight: 600;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.ml-wf-step small {
+  font-weight: 400;
+  font-size: 0.72rem;
+  color: var(--secondary);
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.ml-wf-step.ml-wf-warn {
+  border-color: #F59E0B;
+  background: rgba(245,158,11,0.05);
+}
+
+.ml-wf-step.ml-wf-best {
+  border-color: #10B981;
+  background: rgba(16,185,129,0.05);
+}
+
+.ml-wf-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.ml-wf-arrow {
+  font-size: 1.2rem;
+  color: var(--secondary);
+  padding: 0 0.35rem;
+  flex-shrink: 0;
+}
+
+/* ── Model Card Bullet Lists ─────────────────────── */
+.ml-model-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text);
+}
+
+.ml-model-list ul {
+  margin: 0.35rem 0 0 1rem;
+  padding: 0;
+  font-size: 0.85rem;
+  color: var(--secondary);
+  line-height: 1.7;
+}
+
+/* ── KPI Row ─────────────────────────────────────── */
+.ml-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.ml-kpi-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.ml-kpi-card:hover {
+  border-color: var(--accent);
+}
+
+.ml-kpi-card.ml-kpi-green {
+  border-top: 3px solid #10B981;
+}
+
+.ml-kpi-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+
+.ml-kpi-value {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.ml-kpi-card.ml-kpi-green .ml-kpi-value {
+  color: #10B981;
+}
+
+@media (max-width: 1100px) { .ml-kpi-row { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px)  { .ml-kpi-row { grid-template-columns: repeat(2, 1fr); } }
+
+/* ── Viz Grid 2-col ──────────────────────────────── */
+.ml-viz-grid-2 {
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .ml-viz-grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ── Prediction Card ─────────────────────────────── */
+.ml-prediction-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.ml-pred-col {
+  flex: 1;
+  min-width: 240px;
+}
+
+.ml-pred-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+.ml-pred-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.ml-pred-row span { color: var(--secondary); }
+.ml-pred-row strong { color: var(--primary); }
+
+.ml-pred-arrow {
+  font-size: 2.5rem;
+  color: var(--accent);
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+.ml-pred-output {
+  background: rgba(16,185,129,0.04);
+  border: 1px solid #A7F3D0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.ml-pred-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #10B981;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.ml-pred-label {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  margin-bottom: 0.75rem;
+}
+
+.ml-pred-badge {
+  display: inline-block;
+  background: #FEF2F2;
+  color: #C1121F;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  border: 1px solid #FCA5A5;
+  margin-bottom: 0.5rem;
+}
+
+.ml-pred-model {
+  font-size: 0.75rem;
+  color: var(--secondary);
+}
+
+/* ── Limitations List ────────────────────────────── */
+.ml-limitations {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.ml-limit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.ml-limit-icon {
+  font-size: 1rem;
+  color: #F59E0B;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* ── Future Work Grid ────────────────────────────── */
+.ml-future-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.ml-future-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+}
+
+.ml-future-item:hover {
+  border-color: var(--accent);
+}
+
+.ml-future-num {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.4rem;
+}
+
+.ml-future-item strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--primary);
+  margin-bottom: 0.4rem;
+}
+
+.ml-future-item p {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) { .ml-future-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .ml-future-grid { grid-template-columns: 1fr; } }
+
